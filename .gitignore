@@ -3,4 +3,3 @@ dist
 .turbo
 package-lock.json
 yarn.lock
-packages\docs\src\styles\tailwind.css

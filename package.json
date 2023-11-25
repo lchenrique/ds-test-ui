@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@adopets/ds",
   "scripts": {
     "dev": "turbo run dev --no-daemon --parallel",
