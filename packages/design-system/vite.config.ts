@@ -29,3 +29,11 @@ export function reactVirtualized() {
     },
   };
 }
+
+// "repository": {
+//   "type": "git",
+//   "url": "git+https://github.com/lchenrique/ds-test-ui"
+// },
+// "publishConfig": {
+//   "registry": "https://npm.pkg.github.com/ds-test-ui/design-system"
+// },

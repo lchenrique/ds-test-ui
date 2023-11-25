@@ -6,11 +6,6 @@ interface IThemeContext {
   setTheme: (theme: themeType) => void;
 }
 
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { far } from "@fortawesome/pro-regular-svg-icons";
-import { fas } from "@fortawesome/pro-solid-svg-icons";
-library.add(fas);
-library.add(far);
 
 export const ThemeContext = React.createContext({} as IThemeContext);
 
@@ -51,3 +46,4 @@ const ThemeProvider = ({
   );
 };
 export { ThemeProvider };
+
