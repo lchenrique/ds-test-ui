@@ -1,5 +1,6 @@
 {
   "name": "@adopets/ds",
+  "license": "MIT",
   "scripts": {
     "dev": "turbo run dev --no-daemon --parallel",
     "build": "turbo run build",
