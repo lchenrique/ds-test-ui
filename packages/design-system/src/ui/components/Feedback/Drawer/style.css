@@ -1,0 +1,15 @@
+.ado-drawer-toggle {
+  @apply bg-@surface-overlay/30 fixed h-full w-full top-0 left-0 z-[1050] transition-all duration-300;
+}
+
+.ado-drawer {
+  @apply fixed top-0 right-0 z-[1050] h-full transition-all duration-300 transform translate-x-full bg-white shadow-lg;
+}
+
+.ado-drawer-close-button {
+  @apply absolute -left-[50px] mr-4 top-1/2 -translate-y-1/2 transition-all duration-500;
+}
+
+.ado-drawer-footer {
+  @apply bg-@colors-neutrals-100 w-full dark:border-@colors-neutrals-400  absolute bottom-0 right-0 border-t;
+}

@@ -1,0 +1,40 @@
+table {
+  border-spacing: 0;
+}
+.ado-table-column-sorter-inner {
+  @apply flex flex-col justify-center items-center  h-spacing-s gap-[2px];
+}
+
+.ado-table-column-sorter-up:hover {
+}
+
+.triangle {
+  @apply fill-@surface-primary stroke-@surface-primary;
+}
+
+.ado-table-column-sorter-down {
+}
+
+.ado-table-column-sorter-inner.sorter-ascend
+  .ado-table-column-sorter-up.triangle {
+  @apply fill-variation-@surface-primary--700 stroke-variation-@surface-primary--800;
+}
+
+.ado-table-column-sorter-inner.sorter-descend
+  .ado-table-column-sorter-down.triangle {
+  @apply fill-variation-@surface-primary--700 stroke-variation-@surface-primary--800;
+}
+
+.ado-table-head-row {
+  @apply transition-all hover:bg-[#fcfcfc] hover:cursor-pointer  rounded-tr-md;
+}
+.main-custom-table .empty .rc-table-content {
+  @apply overflow-x-hidden;
+}
+
+.main-custom-table .rc-table-content {
+  @apply overflow-x-auto w-full;
+}
+.main-custom-table .rc-table-content table {
+  @apply overflow-x-auto w-full;
+}

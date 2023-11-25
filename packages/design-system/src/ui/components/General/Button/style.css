@@ -1,0 +1,53 @@
+.ado-btn {
+  @apply h-min;
+}
+
+.btn-size-large {
+  @apply h-spacing-xxxl py-padding-s px-padding-m;
+}
+
+.btn-size-medium {
+  @apply h-spacing-xxl py-padding-xs px-padding-s;
+}
+
+.btn-size-small {
+  @apply h-spacing-xl py-padding-xxs px-padding-s;
+}
+
+/* Primary */
+.btn-primary,
+.btn-primary[data-loading="true"] {
+  @apply border-@surface-primary bg-@surface-primary text-@text-white fill-@text-white;
+}
+.btn-primary:not(.btn-primary[data-loading="true"]):hover {
+  @apply bg-@surface-hover  border-@surface-hover  text-@text-white;
+}
+.btn-primary[data-disabled="true"],
+.btn-primary:not(.btn-primary[data-loading="true"]).ado-btn-default:disabled,
+.btn-primary:not(
+    .btn-primary[data-loading="true"]
+  ).ado-btn-default.ado-btn-disabled {
+  @apply bg-@surface-disabled-dark border-@stroke-disabled text-@text-disabled-primary;
+}
+
+/* Primary */
+
+/* Secondary */
+.btn-secondary,
+.btn-secondary[data-loading="true"] {
+  @apply bg-@surface-light border-@stroke-light text-@icon-neutral fill-@surface-primary;
+}
+.btn-secondary:not(.btn-secondary[data-loading="true"]):hover {
+  @apply border-@surface-primary text-@surface-primary;
+}
+.btn-secondary[data-disabled="true"],
+.btn-secondary:not(
+    .btn-secondary[data-loading="true"]
+  ).ado-btn-default:disabled,
+.btn-secondary:not(
+    .btn-secondary[data-loading="true"]
+  ).ado-btn-default.ado-btn-disabled {
+  @apply bg-variation-@surface-disabled-dark--300 text-@text-disabled-secondary border-@stroke-disabled;
+}
+
+/* Secondary */

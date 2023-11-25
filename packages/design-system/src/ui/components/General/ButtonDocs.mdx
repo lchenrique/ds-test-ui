@@ -1,0 +1,26 @@
+import {
+  Meta,
+  Primary,
+  Controls,
+  Story,
+  ArgTypes,
+  Canvas,
+  Source,
+  Subtitle,
+} from "@storybook/blocks";
+import * as ButtonStories from "./Button.stories.tsx";
+
+<Meta of={ButtonStories} />
+
+## **Button**
+
+#### When to Use.
+
+#### **First import Button component:**
+
+<Canvas style={{ margin: "0" }} withSource="none">
+  <Story name="Button Story" />
+</Canvas>
+<Controls of={ButtonStories.ButtonStory} exclude={["children", "asChild"]} />
+
+<br />

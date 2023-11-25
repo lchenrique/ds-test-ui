@@ -1,0 +1,180 @@
+{
+  "search": {
+    "_fields": [
+      "id",
+      "uuid",
+      "global_code",
+      "custom_code",
+      "name",
+      "active",
+      "specie_id",
+      "breed_primary_id",
+      "price",
+      "length_stay",
+      "status_key",
+      "adoption_path_key",
+      "branch_id",
+      "archived",
+      "gallery_id",
+      "hidden_uuid",
+      "breed_secondary_id",
+      "blocked",
+      "application_approved_date",
+      "application_adopted_date",
+      "created_date",
+      "age_number",
+      "size_number",
+      "kennel_number",
+      "global_code",
+      "custom_code",
+      "description",
+      "sex_key",
+      "age_key",
+      "size_key",
+      "modified_date",
+      "printed",
+      "name",
+      "picture",
+      "active",
+      "blocked",
+      "payment_model_key",
+      "organization_user_id",
+      "microchip",
+      "neutered",
+      "adoption_path_key"
+    ],
+    "archived": false,
+    "status_key": {
+      "in": ["AVAILABLE", "APPROVED"]
+    },
+    "specie": {
+      "with": {
+        "_fields": ["id", "name"]
+      }
+    },
+    "breed_primary": {
+      "with": {
+        "_fields": ["id", "name"]
+      }
+    },
+    "status": {
+      "with": {
+        "_fields": ["key", "name", "description"]
+      }
+    },
+    "adoption_path": {
+      "with": {
+        "_fields": ["key", "name", "description"]
+      }
+    },
+    "branch": {
+      "with": {
+        "uuid": "4546adb9-b02c-4e62-bef1-473d5285ef92",
+        "_fields": ["id", "uuid", "name", "uuid"],
+        "_exists": true
+      }
+    },
+    "oldest_pending_application": {
+      "with": {
+        "_orderBy": [
+          {
+            "column": "created_date",
+            "sort": "ASC"
+          }
+        ],
+        "_first": true,
+        "_alias": "adoption_applications",
+        "has": {
+          "status_key": {
+            "in": ["PENDING"]
+          },
+          "withdrew": {
+            "isNull": true
+          },
+          "canceled": {
+            "isNull": true
+          }
+        }
+      }
+    },
+    "pet_characteristics": {
+      "with": {
+        "and": {
+          "deleted": false
+        },
+        "deleted": false,
+        "_fields": ["pet_id", "id", "characteristic_id"],
+        "characteristic": {
+          "with": {
+            "_fields": [
+              "characteristic_group_id",
+              "id",
+              "uuid",
+              "key",
+              "name",
+              "description",
+              "icon"
+            ],
+            "group": {
+              "with": {
+                "_fields": ["id", "uuid", "name", "description"]
+              }
+            },
+            "deleted": false
+          }
+        }
+      }
+    },
+    "age": {
+      "with": {
+        "_fields": ["key", "name", "description"]
+      }
+    },
+    "breed_secondary": {
+      "with": {
+        "_fields": ["id", "uuid", "name"]
+      }
+    },
+    "sex": {
+      "with": {
+        "_fields": ["key", "name", "description"]
+      }
+    },
+    "size": {
+      "with": {
+        "_fields": ["key", "name", "description"]
+      }
+    },
+    "organization_user": {
+      "with": {
+        "_fields": ["id", "first_name", "avatar", "uuid"]
+      }
+    },
+    "gallery.public_gallery_datas": {
+      "with": {
+        "deleted": false
+      }
+    },
+    "integration_linked": {
+      "with": true
+    },
+    "fosters": {
+      "with": {
+        "_fields": ["*"],
+        "deleted": false,
+        "user": {
+          "with": true
+        }
+      }
+    }
+  },
+  "options": {
+    "limit": 20,
+    "page": 1,
+    "sort": ["-created_date"]
+  },
+  "tracker": {
+    "key": "ALL_PETS",
+    "uuid": null
+  }
+}

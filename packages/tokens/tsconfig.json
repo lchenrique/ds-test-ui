@@ -1,0 +1,7 @@
+{
+	"extends": "@adopets/ts-config/base.json",
+	"compilerOptions": {
+		"moduleResolution": "node",
+	},
+	"include": ["src"]
+}

@@ -1,0 +1,89 @@
+.ado-collapse-ghost
+  > .ado-collapse-item
+  > .ado-collapse-content
+  > .ado-collapse-content-box {
+  @apply flex flex-col items-start px-spacing-xl pb-spacing-l pt-0;
+}
+
+.table-list-collapse.ado-collapse > .ado-collapse-item > .ado-collapse-header {
+  @apply h-16 py-spacing-l px-spacing-xl;
+}
+.ado-collapse.ado-collapse-icon-position-end
+  > .ado-collapse-item
+  > .ado-collapse-header
+  .ado-collapse-expand-icon {
+  @apply flex items-center flex-nowrap justify-end  gap-1 pl-padding-xs;
+}
+.ado-collapse.table-list-collapse
+  > .ado-collapse-item
+  > .ado-collapse-header
+  .ado-collapse-header-text {
+  @apply flex-1 overflow-x-clip;
+}
+.mobile-content-accordion-wrapper {
+  @apply w-full leading-@normal text-md;
+}
+
+.mobile-content-accordion {
+  @apply m-0 leading-@normal;
+}
+.mobile-content-accordion > span {
+  @apply leading-@normal m-0;
+}
+
+.mobile-content-accordion-box {
+  @apply ml-1 text-@text-light leading-@normal;
+}
+.mobile-content-accordion-wrapper + .mobile-content-accordion-wrapper {
+  @apply mt-spacing-l;
+}
+
+/* Filter */
+
+.ado-table-cell {
+  @apply text-md last:bg-transparent last:hover:bg-transparent hover:cursor-pointer h-[60px] transition-all leading-@normal;
+}
+
+.ado-table-cell:first-child {
+  @apply rounded-tl-border-radius-s;
+}
+
+.main-custom-table tbody tr td {
+  @apply p-spacing-xl leading-@normal;
+}
+
+.main-custom-table thead tr td:last-child {
+  @apply p-0;
+}
+
+.main-custom-table thead tr td {
+  @apply pt-spacing-xl px-spacing-xl pb-spacing-xs  max-h-[60px];
+}
+
+.main-custom-table thead tr td th {
+  @apply p-0;
+}
+.main-custom-table thead tr td span {
+  @apply font-@medium text-md leading-@normal;
+}
+.main-custom-table,
+.main-custom-table thead tr {
+  @apply rounded-tr-border-radius-s;
+}
+.ado-table-cell:nth-last-child(1) {
+  @apply rounded-tr-border-radius-s;
+}
+
+.ado-table-body-cell > td {
+  @apply transition-colors duration-200 text-@text-plain leading-@normal text-md font-@regular;
+}
+.ado-table-body-cell:nth-child(odd) > td {
+  @apply bg-@colors-neutrals-050;
+}
+.ado-table-body-cell:nth-child(even) > td {
+  @apply bg-@surface-light;
+}
+
+.ado-table-body-cell:hover > td {
+  @apply bg-[#fcfcfc] transition-colors duration-200;
+}
