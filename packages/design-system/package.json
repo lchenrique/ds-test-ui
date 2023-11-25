@@ -6,11 +6,11 @@
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"scripts": {
-		"dev": "storybook dev -p 6006",
-		"build": "tsup && tsc ./tailwind.config.ts --outDir ./dist",
+		"dev": "sb dev -p 6006",
+		"build": "tsup && tsc ./tailwind.config.ts --outDir ./dist && yarn build-storybook",
 		"preview": "vite preview",
-		"storybook": "storybook dev -p 6006",
-		"build-storybook": "storybook build"
+		"storybook": "sb dev -p 6006",
+		"build-storybook": "sb build"
 	},
 	"sideEffects": false,
 	"files": [
@@ -26,10 +26,6 @@
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
-	"peerDependencies": {
-		"react": "^18",
-		"react-dom": "^18"
-	},
 	"dependencies": {
 		"@ant-design/plots": "^1.2.5",
 		"@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -89,6 +85,8 @@
 		"eslint-plugin-storybook": "^0.6.15",
 		"postcss": "^8.4.31",
 		"prettier": "3.1.0",
+		"react": "^18",
+		"react-dom": "^18",
 		"storybook": "^7.5.3",
 		"tailwindcss": "^3.3.5",
 		"tsup": "^8.0.1",
@@ -98,5 +96,9 @@
 		"vite": "^5.0.0",
 		"vite-dts": "^1.0.4",
 		"vite-plugin-dts": "^3.6.3"
+	},
+	"peerDependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
 	}
 }

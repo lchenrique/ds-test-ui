@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import path from "path";
-// import { defineConfig } from "vite";
+import { defineConfig } from "vite";
 export default defineConfig({
   define: {
     "process.env": {},

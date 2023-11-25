@@ -1,0 +1,2 @@
+import{j as l}from"./index-ecq6vdbC.js";import{R as t}from"./index-4g5l5LRQ.js";const d=t.createContext({}),u=({initialTheme:s,children:a})=>{const[o,c]=t.useState(s),m=e=>{const r=window.document.documentElement,n=e==="dark";r.classList.remove(n?"light":"dark"),r.classList.add(e),localStorage.setItem("color-theme",e)};return t.useEffect(()=>{const e=localStorage.getItem("color-theme")||s;e&&c(e)},[]),t.useEffect(()=>{m(o)},[o]),l(d.Provider,{value:{theme:o,setTheme:c},children:a})};export{u as T,d as a};
+//# sourceMappingURL=index-dhAYl_7-.js.map
