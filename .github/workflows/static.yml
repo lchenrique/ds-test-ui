@@ -29,4 +29,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: packages/docs/storybook-static # Caminho para os arquivos gerados
+          FOLDER: packages/design-system/storybook-static # Caminho para os arquivos gerados
