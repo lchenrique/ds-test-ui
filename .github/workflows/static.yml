@@ -1,4 +1,4 @@
-name: Deploy storybook
+name: Build and Deploy Storybook
 
 on:
   push:
@@ -17,17 +17,16 @@ jobs:
         with:
           node-version: 20
           cache: "yarn"
-          cache-dependency-path: "**/yarn.lock"
+          cache-dependency-path: "**/yarn-lock"
 
-      - run: npm ci
+      - name: Install dependencies
+        run: yarn install
 
-      - run: npm run build
-        env:
-          TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          TURBO_TEAM: rocketseat
+      - name: Build Storybook
+        run: yarn build
 
       - name: Deploy storybook
-        working-directory: ./packages/design-system
+        working-directory: ./packages/design-system/storybook-static
         run: npm run deploy-storybook -- --ci --existing-output-dir=storybook-static
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
