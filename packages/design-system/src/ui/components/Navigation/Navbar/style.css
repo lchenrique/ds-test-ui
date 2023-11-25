@@ -1,0 +1,48 @@
+.tabs-menu > .ado-tabs-nav {
+  @apply p-0 m-0;
+}
+.tabs-menu
+  > .ado-tabs-nav
+  > .ado-tabs-nav-wrap
+  > .ado-tabs-nav-list
+  > .ado-tabs-tab {
+  @apply p-0 m-0 h-24 py-spacing-s;
+}
+
+.tabs-menu > .ado-tabs-nav > .ado-tabs-nav-wrap > .ado-tabs-nav-list {
+  @apply gap-spacing-xl pr-1;
+}
+
+.tabs-menu.tabs-menu-mobile
+  > .ado-tabs-nav
+  > .ado-tabs-nav-wrap
+  > .ado-tabs-nav-list
+  > .ado-tabs-tab {
+  @apply p-0 m-0 h-12 py-spacing-s;
+}
+.tabs-menu.tabs-menu-mobile > .ado-tabs-nav > .ado-tabs-nav-wrap {
+  @apply pr-6;
+}
+.tabs-menu.tabs-menu-mobile > .ado-tabs-nav {
+  @apply mx-6;
+}
+
+.tabs-menu.tabs-menu-mobile.ado-tabs-top
+  > .ado-tabs-nav
+  .ado-tabs-nav-wrap::after,
+.tabs-menu.tabs-menu-mobile.ado-tabs-bottom
+  > .ado-tabs-nav
+  .ado-tabs-nav-wrap::after,
+.tabs-menu.tabs-menu-mobile.ado-tabs-top
+  > div
+  > .ado-tabs-nav
+  .ado-tabs-nav-wrap::after,
+.tabs-menu.tabs-menu-mobile.ado-tabs-bottom
+  > div
+  > .ado-tabs-nav
+  .ado-tabs-nav-wrap::after {
+  width: 150px;
+  box-shadow: -200px 1px 183px -86px rgba(255, 255, 255, 0.73) inset;
+  -webkit-box-shadow: -200px 1px 183px -86px rgba(255, 255, 255, 0.73) inset;
+  -moz-box-shadow: -200px 1px 183px -86px rgba(255, 255, 255, 0.73) inset;
+}

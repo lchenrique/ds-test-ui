@@ -1,0 +1,27 @@
+import {
+  Meta,
+  Primary,
+  Controls,
+  Story,
+  ArgTypes,
+  Canvas,
+  Source,
+  Subtitle,
+} from "@storybook/blocks";
+import * as BrandStories from "./Brand.stories.tsx";
+
+<Meta of={BrandStories} />
+
+## **Brand**
+
+#### When to Use.
+
+<Canvas style={{ margin: "0" }}>
+  <Story name="Brand Strory" />
+</Canvas>
+<Controls
+  of={BrandStories.BrandStrory}
+  exclude={["children", "type", "asChild"]}
+/>
+
+<br />

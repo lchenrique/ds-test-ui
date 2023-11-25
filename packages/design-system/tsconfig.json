@@ -1,0 +1,14 @@
+{
+    "extends": "@adopets/ts-config/react.json",
+    "compilerOptions": {
+        "outDir": "./dist",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"]
+        }
+    },
+
+    "include": ["src/**/*.ts", "src/**/*.tsx", "tailwind.config.js"],
+    "exclude": ["node_modules"],
+    "allowOverwrite": true
+}

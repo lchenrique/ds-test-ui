@@ -1,0 +1,15 @@
+.collapse-wrapper .accordion-collapse {
+  @apply rounded-border-radius-s border-@stroke-light  border border-solid;
+}
+
+.collapse-wrapper .accordion-collapse:first-child:not(:last-child) {
+  @apply rounded-t-border-radius-s rounded-border-radius-none   border-b-0;
+}
+
+.collapse-wrapper .accordion-collapse + .accordion-collapse:not(:last-child) {
+  @apply rounded-none   border-b-0;
+}
+
+.collapse-wrapper .accordion-collapse:last-child:not(:first-child) {
+  @apply rounded-b-border-radius-s rounded-border-radius-none;
+}

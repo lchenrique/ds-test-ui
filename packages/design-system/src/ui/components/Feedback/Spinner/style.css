@@ -1,0 +1,40 @@
+.indicator {
+  @apply absolute   w-10 h-10  top-1/2 z-50;
+}
+
+.indicator-spin {
+  @apply absolute  w-10 h-10  top-1/2  z-50;
+}
+
+.indicator {
+  position: absolute;
+  transform-origin: center center;
+  border-radius: 50%;
+  border: 3px solid theme("colors.@colors-neutrals-200");
+  animation: rotation 500ms linear infinite;
+}
+.indicator-spin {
+  position: absolute;
+  transform-origin: center center;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: theme("colors.@surface-primary");
+  animation: rotation 500ms linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

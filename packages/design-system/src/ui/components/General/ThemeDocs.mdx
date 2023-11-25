@@ -1,0 +1,24 @@
+import {
+  Meta,
+  Primary,
+  Controls,
+  Story,
+  ArgTypes,
+  Canvas,
+  Source,
+  Subtitle,
+} from "@storybook/blocks";
+import * as ThemeStories from "./Theme.stories.tsx";
+
+<Meta of={ThemeStories} />
+
+## **Theme**
+
+#### When to Use.
+
+<Canvas style={{ margin: "0" }}>
+  <Story name="Colors" />
+</Canvas>
+<Controls of={ThemeStories.Colors} exclude={["children", "type", "asChild"]} />
+
+<br />

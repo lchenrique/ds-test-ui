@@ -1,0 +1,24 @@
+import {
+  Meta,
+  Primary,
+  Controls,
+  Story,
+  ArgTypes,
+  Canvas,
+  Source,
+  Subtitle,
+} from "@storybook/blocks";
+
+import * as Pagination from "./Pagination.stories.tsx";
+
+<Meta of={Pagination} />
+
+## **Pagination**
+
+#### When to Use.
+
+<Canvas style={{ margin: "0" }} withSource="none">
+  <Story name="Pagination Story" />
+</Canvas>
+<Controls of={Pagination.PaginationStory} />
+<br />

@@ -1,0 +1,19 @@
+.row-dragging {
+  background: #fafafa;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row-dragging .actions {
+  display: none;
+}
+
+.row-dragging td {
+  padding: 4px;
+}
+
+.row-dragging .drag-visible {
+  visibility: visible;
+}

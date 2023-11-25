@@ -1,0 +1,122 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  @apply dark:bg-slate-800;
+}
+p {
+  @apply text-@text-light;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-@text-plain p-0 m-0 leading-none;
+}
+
+.ado-avatar-group-popover .ado-popover-inner-content {
+  @apply flex gap-1;
+}
+
+.ado-avatar-group .ado-avatar,
+.ado-avatar-group-popover .ado-avatar {
+  @apply border-@stroke-brand-secondary dark:border-@stroke-brand-secondary/20 
+  bg-variation-@stroke-brand-secondary--500 dark:bg-variation-@stroke-brand-secondary--700  text-variation-@text-light--100;
+}
+
+.ado-popover .ado-popover-arrow:before,
+.ado-popover .ado-popover-inner {
+  @apply dark:bg-slate-700;
+}
+
+.ado-avatar {
+  @apply flex justify-center items-center overflow-hidden bg-@colors-neutrals-100;
+}
+.ado-avatar-size-md {
+  @apply h-spacing-xxl w-spacing-xxl;
+}
+.ado-avatar-size-xs {
+  @apply h-spacing-l w-spacing-l;
+}
+.ado-avatar-size-sm {
+  @apply h-spacing-xl w-spacing-xl;
+}
+.ado-avatar-size-lg {
+  @apply h-spacing-xxxl w-spacing-xxxl;
+}
+.ado-avatar-size-xlg {
+  @apply h-spacing-5xl w-spacing-5xl;
+}
+
+.ado-select-item-option-state {
+  display: none !important;
+}
+
+.ado-select-dropdown {
+  @apply p-padding-s;
+}
+
+.ado-select-item {
+  padding: 0 !important;
+}
+
+.ado-select-selector {
+  padding: 0 12px !important;
+}
+
+.ado-tag-close-icon {
+  color: #707390 !important;
+  font-size: 16px !important;
+}
+
+.ado-select-disabled .ado-select-selector {
+  background-color: #ebebef !important;
+}
+
+.ado-select-disabled .ado-select-selection-placeholder {
+  color: #999bb0 !important;
+}
+
+.ado-tag {
+  @apply rounded-border-radius-s;
+}
+
+.ado-table-wrapper .ado-table-column-sorters {
+  @apply justify-start;
+}
+.ado-table-wrapper .ado-table-column-title {
+  @apply flex-none;
+}
+
+.ado-table-wrapper .ado-table-column-sorter-up,
+.ado-table-wrapper .ado-table-column-sorter-down {
+  @apply text-@surface-primary;
+}
+
+.ado-table-wrapper .ado-table-column-sorter-up.active,
+.ado-table-wrapper .ado-table-column-sorter-down.active {
+  @apply text-variation-@surface-primary--700;
+}
+
+.ado-tabs-nav::before {
+  border-bottom: 2px solid transparent !important;
+}
+
+.hasBorderBottom .ado-tabs-nav::before {
+  border-bottom: 2px solid #e0e1e7 !important;
+}
+
+.ado-tabs-nav .ado-badge .ado-badge-count {
+  min-width: 16px;
+  height: 16px;
+  line-height: 16px;
+}
