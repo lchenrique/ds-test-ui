@@ -1,4 +1,4 @@
-name: Build and Deploy Storybook
+name: Deploy docs
 
 on:
   push:
@@ -6,27 +6,28 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: "yarn"
+          cache-dependency-path: "**/yarn.lock"
 
-      - name: Install dependencies
-        run: yarn install
+      - run: yarn
 
-      - name: Build Storybook
+      - run: yarn build
+        env:
+          TURBO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TURBO_TEAM: rocketseat
+
+      - name: Deploy storybook
+        working-directory: ./packages/design-system
         run: yarn build
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: ../packages/design-system/storybook-static # Caminho para os arquivos gerados
+        env:
+          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
