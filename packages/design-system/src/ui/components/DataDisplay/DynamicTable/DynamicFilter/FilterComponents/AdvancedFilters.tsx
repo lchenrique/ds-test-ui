@@ -113,6 +113,36 @@ const AdvancedFilters = (props: IAdvancedFilterProps) => {
 
                     children: <Child component={config.component} name={config.name} normalize={config.normalize} />,
                 },
+                {
+                    key: uuid(),
+                    label: (
+                        <Text as="h1" color="text-plain" size="sm" className="font-semibold">
+                            {config.title}
+                        </Text>
+                    ),
+
+                    children: <Child component={config.component} name={config.name} normalize={config.normalize} />,
+                },
+                {
+                    key: uuid(),
+                    label: (
+                        <Text as="h1" color="text-plain" size="sm" className="font-semibold">
+                            {config.title}
+                        </Text>
+                    ),
+
+                    children: <Child component={config.component} name={config.name} normalize={config.normalize} />,
+                },
+                {
+                    key: uuid(),
+                    label: (
+                        <Text as="h1" color="text-plain" size="sm" className="font-semibold">
+                            {config.title}
+                        </Text>
+                    ),
+
+                    children: <Child component={config.component} name={config.name} normalize={config.normalize} />,
+                },
             ]
         }
 

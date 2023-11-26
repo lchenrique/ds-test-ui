@@ -10,6 +10,14 @@
   @apply absolute  transition-all duration-500;
 }
 
+.ado-drawer-header-wrapper{
+  @apply px-padding-l py-padding-m
+}
+.ado-drawer-header-subtitle{
+  @apply pt-padding-xs m-0
+}
+
+
 .ado-drawer-footer {
   @apply bg-@colors-neutrals-100 w-full dark:border-@colors-neutrals-400 border-t;
 }

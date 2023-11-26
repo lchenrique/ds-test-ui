@@ -1,12 +1,12 @@
-import { DrawerProps, Form, FormProps, Space } from 'antd'
+import { DrawerCloseButton } from '@/ui/components/Feedback/Drawer/DrawerCloseButton'
+import { DrawerFooter } from '@/ui/components/Feedback/Drawer/DrawerFooter'
+import { DrawerHeader } from '@/ui/components/Feedback/Drawer/DrawerHeader'
+import { DrawerProps, Form, FormProps } from 'antd'
 import { VariantProps, cva } from 'class-variance-authority'
 import { CSSProperties, ReactNode, cloneElement, useEffect, useState } from 'react'
 import { useUpdateEffect } from 'usehooks-ts'
 import { useBreakpoint } from '../../../hooks/useBreakpoint'
 import { cn } from '../../../lib/utils'
-import { Icon } from '../../General'
-import { Button } from '../../General/Button'
-import { Text } from '../../Typography'
 import './style.css'
 
 const placementVariant = {
@@ -22,18 +22,6 @@ const placementVariantCVA = cva('', {
     variants: placementVariant,
 })
 
-const closeBtnVariant = {
-    placement: {
-        top: '-bottom-[96px] right-0 mt-spacing-s',
-        right: '-left-[50px] mr-spacing-s  top-1/2 -translate-y-1/2',
-        left: '-right-[50px] ml-spacing-s  top-1/2 -translate-y-1/2',
-        bottom: '-top-[40px] right-0 mb-spacing-s ',
-    },
-}
-
-const closeBtnVariantCVA = cva('', {
-    variants: closeBtnVariant,
-})
 export interface IDrawer extends VariantProps<typeof placementVariantCVA> {
     ApiService: {
         lastResults: {
@@ -50,7 +38,7 @@ export interface IDrawer extends VariantProps<typeof placementVariantCVA> {
     cancelText?: string
     okText?: string
     drawerProps?: DrawerProps
-    hideCancelButton?: boolean
+    showCancelButton?: boolean
     form?: boolean
 }
 
@@ -65,7 +53,7 @@ function Drawer({
     okText,
     cancelText,
     placement = 'right',
-    hideCancelButton = false,
+    showCancelButton = true,
     form: withForm = true,
     ApiService,
 }: IDrawer) {
@@ -133,7 +121,7 @@ function Drawer({
                   })
               },
           } as FormProps)
-        : ({ className: ' ' } as any)
+        : ({ className: 'h-[inherit]' } as any)
 
     const [display, setDisplay] = useState('none')
     const [opacity, setOpacity] = useState(0)
@@ -171,6 +159,8 @@ function Drawer({
         toggleVisibility()
     }, [visible])
 
+    const placementOrMobile = !sm ? 'bottom' : placement
+
     const isOpenPlacement = {
         top: 'translate-y-0',
         right: 'translate-x-0',
@@ -178,15 +168,16 @@ function Drawer({
         bottom: '-translate-y-0',
     }
 
-    const placementSize = {
+    const placementSize: Record<string, CSSProperties> = {
         top: { height: _props?.width || 'auto', width: 'calc(100% - 80px)', maxHeight: 'calc(100vh - 48px)' },
         right: { width: _props?.width || 392 },
         left: { width: _props?.width || 392 },
-        bottom: { height: _props?.width || 'auto', width: 'calc(100% - 80px)', maxHeight: 'calc(100vh - 48px)' } as CSSProperties,
+        bottom: { height: _props?.width || 'auto', width: 'calc(100% - 80px)', maxHeight: 'calc(100vh - 48px)' },
     }
 
-    const placementOrMobile = !sm ? 'bottom' : placement
-    const calcFooter = placement === 'bottom' || placement === 'top' ? (subTitle ? ' max-h-[calc(100vh-242px)]' : 'max-h-[calc(100vh-210px)]') : 'max-h-[calc(100vh-154px)]'
+    const noFooter = !onOk
+    const topOrBottom = placementOrMobile === 'bottom' || placementOrMobile === 'top'
+    const calcFooter = topOrBottom ? (subTitle ? ' max-h-[calc(100vh-242px)]' : 'max-h-[calc(100vh-210px)]') : noFooter ? 'max-h-[calc(100vh-98px)]' : 'max-h-[calc(100vh-154px)]'
 
     return (
         <div className="flex">
@@ -194,59 +185,23 @@ function Drawer({
 
             <div
                 style={{ display, ...placementSize[placementOrMobile!] }}
-                className={cn('ado-drawer', placementVariantCVA({ placement: placementOrMobile }), isOpen ? isOpenPlacement[placementOrMobile!] : '')}>
-                <div style={{}} className="px-padding-l py-padding-m">
-                    <Text as="h1" size="lg" color="text-plain" className="font-semibold">
-                        {title}
-                    </Text>
-                    {subTitle && (
-                        <Text as="p" className="pt-padding-xs m-0">
-                            {subTitle}
-                        </Text>
-                    )}
-                </div>
-                {placement === 'bottom' || placement === 'top' ? (
-                    <div
-                        onClick={toggleVisibility}
-                        style={{ display, opacity }}
-                        className={cn('ado-drawer-close-button cursor-pointer bg-red-100', closeBtnVariantCVA({ placement: placementOrMobile }))}>
-                        <Icon name="close" size="padding-m" />
-                    </div>
-                ) : (
-                    <Button
-                        size="small"
-                        onClick={toggleVisibility}
-                        style={{ display, opacity }}
-                        shape="circle"
-                        className={cn('ado-drawer-close-button', closeBtnVariantCVA({ placement: placementOrMobile }))}
-                        icon={<Icon name="close" />}
-                    />
-                )}
+                className={cn('ado-drawer', placementVariantCVA({ placement: placementOrMobile }), isOpen ? isOpenPlacement[placementOrMobile!] : '', noFooter ? 'bottom-0' : '')}>
+                <DrawerHeader title={title} subTitle={subTitle} />
+                <DrawerCloseButton style={{ display, opacity }} onlyIcon={topOrBottom} onClick={toggleVisibility} placement={placementOrMobile} />
 
                 <HasForm {...formProps}>
-                    <div className={cn('w-full relative px-padding-l py-padding-m overflow-y-auto', calcFooter)}>{content ? cloneElement(content, { form }) : null}</div>
-                    {onOk && (
-                        <div
-                            className={cn(
-                                'ado-drawer-footer absolute bottom-0 ',
-                                placement === 'top' ? '-bottom-14 rounded-b-border-radius-l overflow-hidden' : placement === 'bottom' ? '-bottom-14' : '',
-                            )}>
-                            <Space className="flex justify-end items-center px-5 py-2">
-                                {!hideCancelButton && (
-                                    <Form.Item className="p-0 m-0">
-                                        <Button type="secondary" onClick={toggleVisibility} disabled={isLoading}>
-                                            {cancelText || 'Cancel'}
-                                        </Button>
-                                    </Form.Item>
-                                )}
-                                <Form.Item className="p-0 m-0">
-                                    <Button htmlType="submit" loading={isLoading}>
-                                        {okText || 'Save'}
-                                    </Button>
-                                </Form.Item>
-                            </Space>
-                        </div>
-                    )}
+                    <div className={cn('w-full relative px-padding-l py-padding-m overflow-y-auto h-[inherit] ', calcFooter)}>
+                        {content ? cloneElement(content, { form }) : null}
+                    </div>
+                    <DrawerFooter
+                        isLoading={isLoading}
+                        cancelText={cancelText}
+                        okText={okText}
+                        showCancelButton={showCancelButton}
+                        onClick={toggleVisibility}
+                        showFooter={!noFooter}
+                        placement={placementOrMobile}
+                    />
                 </HasForm>
             </div>
             {/* <AdoDrawer
