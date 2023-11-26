@@ -48,10 +48,11 @@ export const DrawerProvider = ({
             cancelText: props.cancelText,
             okText: props.okText,
             drawerProps: props.drawerProps,
-            hideCancelButton: props.hideCancelButton,
+            showCancelButton: props.showCancelButton,
             visible: true,
             form: props.form,
             placement: props.placement,
+            className: props.className,
         }
         setMainDrawer([...mainDrawer, newDrawer])
         setOpen({ ...open, [newDrawer.key]: true })
@@ -74,9 +75,10 @@ export const DrawerProvider = ({
                                 cancelText={v.cancelText || config?.cancelText}
                                 okText={v.okText || config?.okText}
                                 drawerProps={v.drawerProps}
-                                hideCancelButton={v.hideCancelButton}
+                                showCancelButton={v.showCancelButton}
                                 form={v?.form}
                                 placement={v?.placement}
+                                className={v.className}
                             />
                         )
                     )

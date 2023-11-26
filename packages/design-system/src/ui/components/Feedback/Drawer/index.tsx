@@ -14,7 +14,7 @@ const placementVariant = {
         top: 'top-0 left-1/2 -translate-x-1/2  -translate-y-[calc(100%+56px)]  ',
         right: 'top-0 right-0 translate-x-full',
         left: 'top-0 left-0 -translate-x-full',
-        bottom: 'bottom-14 left-1/2 -translate-x-1/2 translate-y-[calc(100%+56px)]  rounded-t-border-radius-l',
+        bottom: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-[calc(100%+56px)]  rounded-t-border-radius-l',
     },
 }
 
@@ -40,6 +40,7 @@ export interface IDrawer extends VariantProps<typeof placementVariantCVA> {
     drawerProps?: DrawerProps
     showCancelButton?: boolean
     form?: boolean
+    className?: string
 }
 
 function Drawer({
@@ -56,6 +57,7 @@ function Drawer({
     showCancelButton = true,
     form: withForm = true,
     ApiService,
+    className,
 }: IDrawer) {
     const [isLoading, setIsLoading] = useState(false)
     const [form] = Form.useForm()
@@ -103,12 +105,14 @@ function Drawer({
 
     const HasForm = withForm ? Form : 'div'
 
+    const noFooter = !onOk
+
     const formProps = withForm
         ? ({
               onFinish: handleOk,
               form: form,
               layout: 'vertical',
-              className: 'h-[inherit]',
+              className: noFooter ? 'h-[calc(100%-98px)]' : 'h-[calc(100%-154px)]',
               name: 'register',
               scrollToFirstError: true,
               validateMessages: { required: 'Required field' },
@@ -121,7 +125,7 @@ function Drawer({
                   })
               },
           } as FormProps)
-        : ({ className: 'h-[inherit]' } as any)
+        : ({ className: noFooter ? 'h-[calc(100%-98px)]' : 'h-[calc(100%-154px)]' } as any)
 
     const [display, setDisplay] = useState('none')
     const [opacity, setOpacity] = useState(0)
@@ -169,15 +173,13 @@ function Drawer({
     }
 
     const placementSize: Record<string, CSSProperties> = {
-        top: { height: _props?.width || 'auto', width: 'calc(100% - 80px)', maxHeight: 'calc(100vh - 48px)' },
+        top: { height: _props?.width || 453, width: 'calc(100% - 80px)' },
         right: { width: _props?.width || 392 },
         left: { width: _props?.width || 392 },
-        bottom: { height: _props?.width || 'auto', width: 'calc(100% - 80px)', maxHeight: 'calc(100vh - 48px)' },
+        bottom: { height: _props?.width || 453, width: 'calc(100% - 80px)' },
     }
 
-    const noFooter = !onOk
     const topOrBottom = placementOrMobile === 'bottom' || placementOrMobile === 'top'
-    const calcFooter = topOrBottom ? (subTitle ? ' max-h-[calc(100vh-242px)]' : 'max-h-[calc(100vh-210px)]') : noFooter ? 'max-h-[calc(100vh-98px)]' : 'max-h-[calc(100vh-154px)]'
 
     return (
         <div className="flex">
@@ -185,12 +187,17 @@ function Drawer({
 
             <div
                 style={{ display, ...placementSize[placementOrMobile!] }}
-                className={cn('ado-drawer', placementVariantCVA({ placement: placementOrMobile }), isOpen ? isOpenPlacement[placementOrMobile!] : '', noFooter ? 'bottom-0' : '')}>
+                className={cn(
+                    'ado-drawer',
+                    placementVariantCVA({ placement: placementOrMobile }),
+                    isOpen ? isOpenPlacement[placementOrMobile!] : '',
+                    placementOrMobile === 'top' ? 'rounded-b-border-radius-l bottom-0 ' : 'bottom-0',
+                )}>
                 <DrawerHeader title={title} subTitle={subTitle} />
                 <DrawerCloseButton style={{ display, opacity }} onlyIcon={topOrBottom} onClick={toggleVisibility} placement={placementOrMobile} />
 
                 <HasForm {...formProps}>
-                    <div className={cn('w-full relative px-padding-l py-padding-m overflow-y-auto h-[inherit] ', calcFooter)}>
+                    <div className={cn('w-full relative px-padding-l  h-full overflow-auto', noFooter ? 'pt-padding-m' : 'py-padding-m ', className)}>
                         {content ? cloneElement(content, { form }) : null}
                     </div>
                     <DrawerFooter

@@ -15,7 +15,7 @@ const DrawerFooter = ({ placement, cancelText, onClick, showCancelButton, okText
 
     return (
         showFooter && (
-            <div className={cn('ado-drawer-footer absolute bottom-0 ', verticalPosition)}>
+            <div className={cn('ado-drawer-footer  ', verticalPosition)}>
                 <Flex justify="end" gap="padding-s" className="px-5 py-2">
                     {showCancelButton && (
                         <Form.Item className="p-0 m-0">

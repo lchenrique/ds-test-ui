@@ -149,10 +149,11 @@ const AdvancedFilters = (props: IAdvancedFilterProps) => {
         openDrawer({
             title: 'Filters',
             subTitle: 'Find pets by filtering specific data.',
+            className: 'px-padding-none overflow-hidden',
             content: (
-                <Flex vertical align="start" className="h-[inherit] w-full">
+                <Flex vertical align="start" className="h-[inherit] w-full relative px-0">
                     <Form className="flex flex-col w-full h-[inherit]" form={form} onFinish={handleSubmit}>
-                        <div className="flex-1 flex flex-col gap-padding-xs w-full  overflow-auto">
+                        <div className="flex-1 flex flex-col gap-padding-xs w-full  overflow-auto  px-padding-l">
                             {props?.filters &&
                                 props?.filters?.map(({ title, name, component, normalize }) => {
                                     labels.push({ name, label: title })
@@ -160,7 +161,7 @@ const AdvancedFilters = (props: IAdvancedFilterProps) => {
                                     return <Collapse size="small" key={uuid()} items={item({ title, name, component, normalize })} className=" bg-white" />
                                 })}
                         </div>
-                        <footer className="flex flex-col gap-padding-s mt-spacing-l w-full">
+                        <footer className="flex flex-col gap-padding-s my-spacing-l w-ful px-padding-l">
                             <Form.Item className="p-0 m-0 w-full">
                                 <Button htmlType="submit" size="large" block type="primary" icon={<Icon name="sliders" />}>
                                     Filter

@@ -9,39 +9,132 @@ export default {
 export const DrawerStory = {
     render: (args: any) => {
         const { openDrawer } = useDrawer()
-        const open = (placement: string) => {
+        const open = (placement: string, customFooter?: boolean) => {
             openDrawer({
                 title: 'Drawer',
                 subTitle: 'sdsaldapsdsada',
+                className: customFooter ? 'overflow-hidden px-padding-none' : '',
                 content: (
-                    <>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
+                    <div className="h-full flex flex-col ">
+                        <div className="px-padding-l flex-1" style={{ overflow: customFooter ? 'auto' : 'initial' }}>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
 
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                        <div>content</div>
-                    </>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                            <div>content</div>
+                        </div>
+
+                        {customFooter && <div className="h-16 w-full bg-blue-500">Footer</div>}
+                    </div>
                 ),
-                onOk: () => true,
+                onOk: !customFooter ? () => true : undefined,
                 placement: placement as any,
             })
         }
@@ -71,6 +164,31 @@ export const DrawerStory = {
                         open('bottom')
                     }}>
                     Bottom
+                </Button>
+
+                <Button
+                    onClick={() => {
+                        open('left', true)
+                    }}>
+                    Left footer custom
+                </Button>
+                <Button
+                    onClick={() => {
+                        open('top', true)
+                    }}>
+                    Top footer custom
+                </Button>
+                <Button
+                    onClick={() => {
+                        open('right', true)
+                    }}>
+                    Right footer custom
+                </Button>
+                <Button
+                    onClick={() => {
+                        open('bottom', true)
+                    }}>
+                    Bottom footer custom
                 </Button>
             </div>
         )
