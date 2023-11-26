@@ -18,7 +18,7 @@ function useBreakpoint() {
 
     setBreakpoint({
       xs: window.innerWidth > 0 || window.innerWidth >= ret["xs"],
-      sm: window.innerWidth > ret["xs"] || window.innerWidth >= ret["sm"],
+      sm: window.innerWidth >= ret["sm"],
       md: window.innerWidth > ret["sm"] || window.innerWidth >= ret["md"],
       lg: window.innerWidth > ret["md"] || window.innerWidth >= ret["lg"],
       xl: window.innerWidth > ret["lg"] || window.innerWidth >= ret["xl"],
@@ -37,3 +37,4 @@ function useBreakpoint() {
 }
 
 export { useBreakpoint };
+

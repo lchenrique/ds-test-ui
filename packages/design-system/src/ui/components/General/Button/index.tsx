@@ -22,8 +22,8 @@ const iconSideClass = cva("", {
 
 export interface IButtonProps
   extends Omit<ButtonProps, "type" | "size" | "shape" | "disabled">,
-    VariantProps<typeof twButtonClass>,
-    VariantProps<typeof iconVariantsCVA> {
+  VariantProps<typeof twButtonClass>,
+  VariantProps<typeof iconVariantsCVA> {
   asChild?: boolean;
   block?: boolean;
   loading?: boolean;
@@ -90,11 +90,10 @@ const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(
       >
         {(loading || icon) && (
           <div
-            className={`inline w-spacing-s h-spacing-s  fill-inherit  ${iconDisabledVariantClass} ${
-              (icon && children) || (loading && children)
-                ? `${cn(iconSideClass({ iconSide: iconSide }))}`
-                : " "
-            } text-md leading-@normal `}
+            className={`inline w-spacing-s h-spacing-s  fill-inherit  ${iconDisabledVariantClass} ${(icon && children) || (loading && children)
+              ? `${cn(iconSideClass({ iconSide: iconSide }))}`
+              : " "
+              } text-md leading-@normal `}
           >
             {loading ? (
               <Icon
@@ -117,3 +116,4 @@ const Button = React.forwardRef<HTMLButtonElement, IButtonProps>(
 Button.displayName = "Button";
 
 export { Button, twButtonClass };
+

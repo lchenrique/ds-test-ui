@@ -10,10 +10,12 @@ const items: ICollapseProps['items'] = [
 ]
 
 export default {
-    title: 'Components/Collapse',
-    args: {
-        prop1: 'Value1',
-        prop2: 'Value2',
+    title: 'Components/DataDisplay/Collapse',
+    argTypes: {
+        size: {
+            control: 'select',
+            options: ['small', 'default', 'large'],
+        },
     },
 } as Meta
 
@@ -23,6 +25,6 @@ export const CollapseStory = {
     },
 
     render: (args: any) => {
-        return <Collapse items={items} />
+        return <Collapse items={items} {...args} />
     },
 }

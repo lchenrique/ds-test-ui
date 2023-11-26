@@ -3,11 +3,11 @@
 }
 
 .ado-drawer {
-  @apply fixed top-0 right-0 z-[1050] h-full transition-all duration-300 transform translate-x-full bg-white shadow-lg;
+  @apply fixed  z-[1050] h-full transition-all duration-300 transform bg-white shadow-lg ;
 }
 
 .ado-drawer-close-button {
-  @apply absolute -left-[50px] mr-4 top-1/2 -translate-y-1/2 transition-all duration-500;
+  @apply absolute  transition-all duration-500;
 }
 
 .ado-drawer-footer {

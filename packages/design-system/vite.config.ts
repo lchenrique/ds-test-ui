@@ -1,17 +1,19 @@
 import * as fs from "fs";
 import path from "path";
 import { defineConfig } from "vite";
+
 export default defineConfig({
   define: {
     "process.env": {},
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"), // Substitua 'src' pelo diretório raiz do seu projeto
+      "@": path.resolve(__dirname, "src")
     },
   },
   plugins: [reactVirtualized()],
 });
+
 const WRONG_CODE = `import { bpfrpt_proptype_WindowScroller } from "../WindowScroller.js";`;
 export function reactVirtualized() {
   return {

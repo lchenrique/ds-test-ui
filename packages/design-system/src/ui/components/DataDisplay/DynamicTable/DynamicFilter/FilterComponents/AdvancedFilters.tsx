@@ -131,7 +131,7 @@ const AdvancedFilters = (props: IAdvancedFilterProps) => {
                                 })}
                         </div>
                         <footer className="flex flex-col gap-padding-s mt-spacing-l w-full">
-                            <Form.Item className="p-0 m-0">
+                            <Form.Item className="p-0 m-0 w-full">
                                 <Button htmlType="submit" size="large" block type="primary" icon={<Icon name="sliders" />}>
                                     Filter
                                 </Button>
