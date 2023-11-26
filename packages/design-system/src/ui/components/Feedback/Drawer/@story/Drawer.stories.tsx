@@ -10,10 +10,22 @@ export const DrawerStory = {
     render: (args: any) => {
         const { openDrawer } = useDrawer()
         const open = (placement: string) => {
-            console.log('placement', placement)
             openDrawer({
                 title: 'Drawer',
-                content: <>Content</>,
+                subTitle: 'sdsaldapsdsada',
+                content: (
+                    <>
+                        <div>content</div>
+                        <div>content</div>
+                        <div>content</div>
+                        <div>content</div>
+                        <div>content</div>
+                        <div>content</div>
+                        <div>content</div>
+                        <div>content</div>
+                        <div>content</div>
+                    </>
+                ),
                 onOk: () => true,
                 placement: placement as any,
             })

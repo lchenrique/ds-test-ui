@@ -11,10 +11,10 @@ import './style.css'
 
 const placementVariant = {
     placement: {
-        top: 'top-0 left-1/2 -translate-x-1/2 -translate-y-full rounded-b-border-radius-l',
+        top: 'top-0 left-1/2 -translate-x-1/2  -translate-y-[calc(100%+56px)]  ',
         right: 'top-0 right-0 translate-x-full',
         left: 'top-0 left-0 -translate-x-full',
-        bottom: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-full rounded-t-border-radius-l',
+        bottom: 'bottom-14 left-1/2 -translate-x-1/2 translate-y-[calc(100%+56px)]  rounded-t-border-radius-l',
     },
 }
 
@@ -24,7 +24,7 @@ const placementVariantCVA = cva('', {
 
 const closeBtnVariant = {
     placement: {
-        top: '-bottom-[40px] right-0 mt-spacing-s',
+        top: '-bottom-[96px] right-0 mt-spacing-s',
         right: '-left-[50px] mr-spacing-s  top-1/2 -translate-y-1/2',
         left: '-right-[50px] ml-spacing-s  top-1/2 -translate-y-1/2',
         bottom: '-top-[40px] right-0 mb-spacing-s ',
@@ -64,7 +64,7 @@ function Drawer({
     drawerProps,
     okText,
     cancelText,
-    placement,
+    placement = 'right',
     hideCancelButton = false,
     form: withForm = true,
     ApiService,
@@ -72,8 +72,6 @@ function Drawer({
     const [isLoading, setIsLoading] = useState(false)
     const [form] = Form.useForm()
     const { sm } = useBreakpoint()
-
-    console.log('placement', placement)
 
     useEffect(() => {
         setIsLoading(false)
@@ -122,7 +120,7 @@ function Drawer({
               onFinish: handleOk,
               form: form,
               layout: 'vertical',
-              className: 'h-full px-padding-l py-padding-m ',
+              className: 'h-[inherit]',
               name: 'register',
               scrollToFirstError: true,
               validateMessages: { required: 'Required field' },
@@ -135,7 +133,7 @@ function Drawer({
                   })
               },
           } as FormProps)
-        : ({ className: 'h-full px-padding-l py-padding-m ' } as any)
+        : ({ className: ' ' } as any)
 
     const [display, setDisplay] = useState('none')
     const [opacity, setOpacity] = useState(0)
@@ -181,13 +179,14 @@ function Drawer({
     }
 
     const placementSize = {
-        top: { height: _props?.width || 'max-content', width: 'calc(100% - 50px)', maxHeight: 'calc(100vh - 48px)' },
+        top: { height: _props?.width || 'auto', width: 'calc(100% - 80px)', maxHeight: 'calc(100vh - 48px)' },
         right: { width: _props?.width || 392 },
         left: { width: _props?.width || 392 },
-        bottom: { height: _props?.width || 'max-content', width: 'calc(100% - 50px)', maxHeight: 'calc(100vh - 48px)' } as CSSProperties,
+        bottom: { height: _props?.width || 'auto', width: 'calc(100% - 80px)', maxHeight: 'calc(100vh - 48px)' } as CSSProperties,
     }
 
     const placementOrMobile = !sm ? 'bottom' : placement
+    const calcFooter = placement === 'bottom' || placement === 'top' ? (subTitle ? ' max-h-[calc(100vh-242px)]' : 'max-h-[calc(100vh-210px)]') : 'max-h-[calc(100vh-154px)]'
 
     return (
         <div className="flex">
@@ -224,29 +223,31 @@ function Drawer({
                     />
                 )}
 
-                <div className={cn('h-[calc(100%-6.25rem)]')}>
-                    <HasForm {...formProps}>
-                        <div className="w-full h-[inherit] relative">{content ? cloneElement(content, { form }) : null}</div>
-                        {onOk && (
-                            <div className={cn('ado-drawer-footer ', placement === 'top' ? 'rounded-b-border-radius-l overflow-hidden' : '')}>
-                                <Space className="flex justify-end items-center px-5 py-2">
-                                    {!hideCancelButton && (
-                                        <Form.Item className="p-0 m-0">
-                                            <Button type="secondary" onClick={toggleVisibility} disabled={isLoading}>
-                                                {cancelText || 'Cancel'}
-                                            </Button>
-                                        </Form.Item>
-                                    )}
+                <HasForm {...formProps}>
+                    <div className={cn('w-full relative px-padding-l py-padding-m overflow-y-auto', calcFooter)}>{content ? cloneElement(content, { form }) : null}</div>
+                    {onOk && (
+                        <div
+                            className={cn(
+                                'ado-drawer-footer absolute bottom-0 ',
+                                placement === 'top' ? '-bottom-14 rounded-b-border-radius-l overflow-hidden' : placement === 'bottom' ? '-bottom-14' : '',
+                            )}>
+                            <Space className="flex justify-end items-center px-5 py-2">
+                                {!hideCancelButton && (
                                     <Form.Item className="p-0 m-0">
-                                        <Button htmlType="submit" loading={isLoading}>
-                                            {okText || 'Save'}
+                                        <Button type="secondary" onClick={toggleVisibility} disabled={isLoading}>
+                                            {cancelText || 'Cancel'}
                                         </Button>
                                     </Form.Item>
-                                </Space>
-                            </div>
-                        )}
-                    </HasForm>
-                </div>
+                                )}
+                                <Form.Item className="p-0 m-0">
+                                    <Button htmlType="submit" loading={isLoading}>
+                                        {okText || 'Save'}
+                                    </Button>
+                                </Form.Item>
+                            </Space>
+                        </div>
+                    )}
+                </HasForm>
             </div>
             {/* <AdoDrawer
 				title={<>{title}</>}

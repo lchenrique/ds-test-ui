@@ -11,5 +11,5 @@
 }
 
 .ado-drawer-footer {
-  @apply bg-@colors-neutrals-100 w-full dark:border-@colors-neutrals-400  absolute bottom-0 right-0 border-t;
+  @apply bg-@colors-neutrals-100 w-full dark:border-@colors-neutrals-400 border-t;
 }
